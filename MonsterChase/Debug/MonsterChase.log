@@ -1,0 +1,15 @@
+﻿  MonsterChase.cpp
+C:\Users\u1378106\OneDrive - University of Utah\Documents\Projects\MonsterChase_Assignment\u1378106\MonsterChase\MonsterChase\MonsterChase.cpp(88): warning C4715: 'Engine::main': not all control paths return a value
+Engine-x86-Debug.lib(Initialization.obj) : error LNK2005: "int Engine::monsterNumber" (?monsterNumber@Engine@@3HA) already defined in MonsterChase.obj
+Engine-x86-Debug.lib(Initialization.obj) : error LNK2005: "int Engine::monsterIndex" (?monsterIndex@Engine@@3HA) already defined in MonsterChase.obj
+Engine-x86-Debug.lib(Initialization.obj) : error LNK2005: "int Engine::counter" (?counter@Engine@@3HA) already defined in MonsterChase.obj
+Engine-x86-Debug.lib(Initialization.obj) : error LNK2005: "int * Engine::MonsterPositionX" (?MonsterPositionX@Engine@@3PAHA) already defined in MonsterChase.obj
+Engine-x86-Debug.lib(Initialization.obj) : error LNK2005: "int * Engine::MonsterPositionY" (?MonsterPositionY@Engine@@3PAHA) already defined in MonsterChase.obj
+Engine-x86-Debug.lib(Initialization.obj) : error LNK2005: "int Engine::myPositionX" (?myPositionX@Engine@@3HA) already defined in MonsterChase.obj
+Engine-x86-Debug.lib(Initialization.obj) : error LNK2005: "int Engine::myPositionY" (?myPositionY@Engine@@3HA) already defined in MonsterChase.obj
+Engine-x86-Debug.lib(Initialization.obj) : error LNK2005: "char * Engine::myName" (?myName@Engine@@3PADA) already defined in MonsterChase.obj
+Engine-x86-Debug.lib(Initialization.obj) : error LNK2005: "char (* Engine::monsterGroup)[10]" (?monsterGroup@Engine@@3PAY09DA) already defined in MonsterChase.obj
+MSVCRTD.lib(exe_main.obj) : error LNK2019: unresolved external symbol _main referenced in function "int __cdecl invoke_main(void)" (?invoke_main@@YAHXZ)
+    Hint on symbols that are defined and could potentially match:
+      "int __cdecl Engine::main(void)" (?main@Engine@@YAHXZ)
+C:\Users\u1378106\OneDrive - University of Utah\Documents\Projects\MonsterChase_Assignment\u1378106\MonsterChase\Debug\MonsterChase.exe : fatal error LNK1120: 1 unresolved externals
