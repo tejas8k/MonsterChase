@@ -12,44 +12,14 @@
 
 #include "Math/Point2D.h"
 
+#include "MonsterChase.h"
+
 #include "Test.cpp"
 
-
-int myPositionX;
-int myPositionY;
-
-int MonsterPositionX[10];
-int MonsterPositionY[10];
-
-int monsterNumber = 0;
-
-int monsterIndex;
-int counter;
-
-char monsterGroup[10][10] = {
-         "mojo",
-         "jojo",
-         "deacon",
-         "john",
-         "drax",
-         "dexter",
-         "jax",
-         "tom",
-         "dick",
-         "harry"
-};
+#include "DynamicArray.h"
 
 
     int main() {
-
-        char myName[100];
-
-       
-        void InitializePlayer();
-
-        void InitializeMonster(int monsterCount);
-
-        void SpawnMoveMonsters();
 
         Engine::Initialize();
         Engine::Point2DUnitTest();
@@ -58,9 +28,10 @@ char monsterGroup[10][10] = {
         gets_s(myName);
         std::cout << "You entered : " << myName;
 
-        std::cout << "\n Enter the number of Monsters to spawn \n";
+        std::cout << "\n Enter the number of Monsters to spawn \n";       
         std::cin >> monsterNumber;
-
+        std::cin.ignore();
+        monsterCount = monsterNumber;
         if (std::cin.fail())
         {
             //not an integer
@@ -68,7 +39,7 @@ char monsterGroup[10][10] = {
 
             return 0;
         }
-
+        RunMonsterChase();
         InitializePlayer();
         SpawnMoveMonsters();
 
@@ -119,6 +90,15 @@ char monsterGroup[10][10] = {
                 std::cout << "Invalid Entry ! \n";
             }
         }
+
+        for (int i = 0; i <= monsterNumber; i++)
+        {
+            delete[] wordsArray[i];
+        }
+
+#if defined(_DEBUG)
+        _CrtDumpMemoryLeaks();
+#endif // _DEBUG
     }
     int randomeGeneratorVertical()
     {
@@ -137,18 +117,20 @@ char monsterGroup[10][10] = {
     void InitializePlayer() {
         myPositionX = randomeGeneratorHorizontal();
         myPositionY = randomeGeneratorVertical();
-        std::cout << "I am starting at postion : \n" <<
+        std::cout << myName << " starting at postion : \n" <<
             myPositionX << "\t" << myPositionY << "\n";
     }
 
-    void InitializeMonster(int monsternumber) {
+    void InitializeMonster(int monsternumber)
+    {
         MonsterPositionX[monsterIndex] = randomeGeneratorHorizontal();
         MonsterPositionY[monsterIndex] = randomeGeneratorVertical();
-        std::cout << "Monster " << monsterGroup[monsterIndex - 1] << " is at:" << "\n" <<
+        std::cout << "Monster " << monsterNames[monsterIndex - 1] << " is at:" << "\n" <<
             MonsterPositionX[monsterIndex] << "\t" << MonsterPositionX[monsterIndex] << "\n";
     }
 
-    void SpawnMoveMonsters() {
+    void SpawnMoveMonsters()
+    {
         for (monsterIndex = 1; monsterIndex <= monsterNumber; monsterIndex++) {
             if (myPositionX == MonsterPositionX[monsterIndex] && myPositionY == MonsterPositionY[monsterIndex]) {
                 break;
@@ -168,4 +150,47 @@ char monsterGroup[10][10] = {
                 }
             }
         }
+    }
+
+    char* readPlayerNameFromInput() {
+        char x[20];
+        size_t length = 0;
+        while (length <= 20) {
+            char c;         
+            c = std::getchar();       
+            if (c != '\n' && c != '\0') {
+                x[length++] = c;
+            }
+            else break;
+        }
+
+        if (length == 0)
+            return nullptr;
+
+        length++;
+        char* _str = new char[length];
+        memcpy(_str, x, length - 1);
+        _str[length - 1] = '\0';
+        return _str;
+    }
+
+    void RunMonsterChase() {    
+
+        char* thisWord;
+        do {
+            //std::cout << "Enter a word, pass empty string to finish : ";
+            std::cout << "Enter monster names : ";
+            thisWord = readPlayerNameFromInput();
+            monsterNames.push_back(thisWord);
+            monsterCount--;
+        } while (monsterCount != 0); //while (thisWord != nullptr);
+
+        wordsArray = new char* [monsterNames.Size()];
+        for (size_t i = 0; i < monsterNames.Size(); i++) {
+            //wordsArray[i] = monsterNames[i];
+        }
+        std::cout << std::endl;
+       // char* pSentence = MakeSentence(wordsArray);
+        //printf("Your Sentence is: %s\n", pSentence);
+
     }

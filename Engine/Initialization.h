@@ -3,5 +3,4 @@
 namespace Engine
 {
 	void Initialize();
-
 }

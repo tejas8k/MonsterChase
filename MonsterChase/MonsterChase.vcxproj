@@ -154,6 +154,7 @@
     <ClCompile Include="MonsterChase.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="DynamicArray.h" />
     <ClInclude Include="MonsterChase.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

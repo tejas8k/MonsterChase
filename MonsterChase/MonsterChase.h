@@ -1,5 +1,8 @@
 #pragma once
+#include "DynamicArray.h"
+
 int monsterNumber = 0;
+int monsterCount = 0;
 
 int monsterIndex;
 int counter;
@@ -12,18 +15,10 @@ int myPositionY;
 
 char myName[100];
 
-char monsterGroup[10][10] = {
-  "mojo",
-  "jojo",
-  "deacon",
-  "john",
-  "drax",
-  "dexter",
-  "jax",
-  "tom",
-  "dick",
-  "harry"
-};
+DynamicArray<char*> monsterNames;
+char** wordsArray;
+
+void RunMonsterChase();
 
 void InitializePlayer();
 
